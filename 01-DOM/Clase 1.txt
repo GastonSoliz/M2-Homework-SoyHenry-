@@ -1,0 +1,58 @@
+DOM->Representacion de un archivo HTML a un objeto con forma de arbol
+Document Object Model
+	   ***
+Construccion de una pagina
+1.Construccion del DOM->Representacion de una pagina HTML parseada a un objeto
+El documento puede ser tomado como un arbol (DOM Tree)
+Al levantar un archivo HTML en una pagina, se transforma en un DOM 
+
+2.Construccion del CSSOM->Proceso donde el objeto(Pagina HTML)adopta estilos (CSS)
+
+3.Generacion del Render Tree->Combinacion de ambas cosas(el DOM y el CSSOM) y decide que se mostrara
+
+4.Generacion del LAYOUT
+Espacio definido por el espacio de salida
+
+Lo que hace que la pagina sea "responsive"
+Se puede configurar mediante el tag <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+5.Painting->Proceso donde se genera la posicion de los elementos dentro de la pagina.
+La parte visible de la pagina se convierte en pixeles para mostrarse en pantalla
+
+¿De que depende el tiempo en que se abre una pagina? De que tan compleja sea la pagina
+bruno-simon.com
+spacejam.com/1996/
+jesse-zhou.com
+
+DOM Api
+El navegador nos da una API para interactuar con el DOM utilizando Javascript.
+
+Selectores->Permitiran buscar y recuperar elementos del DOM
+Al pertenecer a un DOM, tendremos acceso a todos los metodos de la DOM API
+Dentro de la demo tendremos selectores(varios metodos del documento)
+Ej; document.querySelectorAll("div");
+Selecciona a todos los divs del documento 
+document.getElementById("uno");
+Busca y seleccion a aquel id que tenga el elemento "uno"
+
+EventListener->Adicionar funciones que esten pendientes a una accion.
+document.addEventListener("click", function (e)){
+	console.log(e.target);
+}
+			(Tipo de evento que va a estar esperando,funcion callback que se ejecutara){Accion que realizara}
+ES MEJOR UTILIZAR addEventListener EN TODOS LOS CASOS
+El target sera el elemento que cambiara con la accion en divs sera cada div
+
+Elementos
+Event Target->Interfaz implementada por objetos que pueden recibir eventos y tener listener
+Node->Interfaz en la cual un numero de objetos de tipo DOM API heredan. Permite a los objesto ser tratado similarmente
+Element->Representa el archivo HTML
+
+Eventos->Señal de que algo sucedio. Todos los nodos pueden generar eventos
+https://developer.mozilla.org/es/docs/Web/API/Event
+
+
+
+eventlistener
+createelement
+appendchild
