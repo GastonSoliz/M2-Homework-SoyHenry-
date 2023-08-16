@@ -1,0 +1,61 @@
+(2015)ECMASCRIPT6 ECS6 -> European Computer Manufacturer Association
+Standard->Conjunto de reglas
+https://www.w3schools.com/js/js_versions.asp#:~:text=%2C%202019%2C%202020
+Estos estan estandares siguen saliendo y hay que estar actualizandose para trabajar con las mejores practicas
+
+let & const
+const->para variables que no van a mutar su estado, o sea tienen el mismo valor
+	para funciones
+
+**var como variable de indice en un for, al no tener un scope de bloque no se vuelve a inicializar por cada ciclo
+entonces se usara let como indice de un for**
+
+es lo mismo:
+const calcularEdad = function(fechaDeNacimiento){
+	return 2023 - fechaDeNacimiento;
+}
+que:
+En este caso hay haber una linea de codigo sola y sea arrow function si no tiene llaves
+tendra un return implicito, pero de tener mas linea de codigo... habra que hacerla como la otra opcion
+const calcularEdadArrow = (fechaDeNacimiento)=>2023 - fechaDeNacimiento;
+o:
+const calcularEdadArrow = (fechaDeNacimiento)=> {return 2023 - fechaDeNacimiento};
+
+Las funciones flechas son muy utiles en funciones cortas
+
+arr.map(function(element){
+	console.log(element);
+})
+es igual a:
+arr.map((element)=>console.log(element));
+
+**LAS ARROW FUNCTION NO TIENEN KEYWORD THIS
+OSEA NO FUNCIONAN EN CLASES**
+
+HACER CLASES A PARTIR DE AHORA
+class Superheroe{
+	constructor(nom,ape,id){
+		this.nombre=nom;
+		this.apellido=ape;
+		this.identidad=id;
+	}
+
+	metodos dentro de la class y fuera del constructor
+
+}
+
+Creacion de objetos literal
+let archienemigos = {
+	
+}
+
+templates literal
+` ` los backsticks sustituyen a los string basicos '' "" agarrando variables si dentro estan como
+${} y lo demas como string normales
+
+destructuring
+
+
+
+
+ 
