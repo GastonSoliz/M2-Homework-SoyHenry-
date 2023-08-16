@@ -1,0 +1,108 @@
+AJAX->Asynchronous Javascript Xml
+Como hacer envios asincronos
+
+Tradicional ciclo de vida de una pagina
+Cliente->Requeria inicial del server
+Server->Envia HTML->DOM renderiza
+
+Cliente->Form POST(login)->Server
+Server->Guarda datos->Envia HTML con la pagina que se debe renderizar->DOM en el cliente
+
+Ciclo de vida SPA
+Cliente->Requiere inicial del Server
+Server->Envia HTML->Renderiza DOM
+
+Cliente->AJAX->Server
+Server->Guarda datos->Envia JSON->Renderiza en el DOM ya construido
+ 
+al tomar un JSON hay que hacer parsing
+
+**EXTENSION CHROME PARA JSON**
+JSON Viewer
+JSON Beautifier
+******************************
+
+Hyper Text Transfer Protocol
+METODOS HTTP
+-GET->Solicita informacion(Devuelve una mascota encontrada por ID)
+	Cliente
+		Al hacer un click quiero que se ejecute la funcion Get()
+		Hara una request mediante el protocolo HTTP
+	Servidor
+		Mediante el mismo protocolo HTTP devolvera una respuesta
+		SIEMPRE VA A DEVOLVER UNA RESPUESTA CORRECTA O ERROR
+		Ej: Error 404 not found
+		https://developer.mozilla.org/es/docs/Web/HTTP/Status
+		Respuestas informativas 100-199
+		Respuestas satisfactorias 200-299
+		Redirecciones 300-399
+		Error cliente 400-499
+		Error servidor 500-599
+
+	Que lo conforma: GET / HTTP/1.1
+			metodo path
+	Headers: Son objetos... cuyos atributos definen las reglas de esa solicitud
+		 Deben ser unicos
+		 Ej: Host: developer.mozilla.org
+			Accept-Language: fr
+-PUT->Actualiza informacion(Nos permite editar la informacion)
+-DELETE->Borra informacion
+-POST->Insertar/Agregar informacion
+
+EVENTOS->Crean solicitudes de AJAX
+La manera de trabajar con AJAX mediante JQuery
+https://api.jquery.com/
+
+ESTRUCTURA DE UN GET
+$.ajax({
+type: "GET" creo una solicitud GET
+url:"http://localhost:3000/usuarios"  de donde hago la solicitud
+success: usuario 		en caso de ser correcta la solicitud, me trae eso
+});
+
+ESTRUCTURA DE DELETE
+$.ajax{
+type: "DELETE"
+url:"http://localhost:3000/usuarios/usuario1"
+success: "Se elimino el usuario"
+});
+
+Para crear Eventos la base es:
+$("#target").on("click",function(){
+	alert("Handler for `click` called")
+});
+En target le agrego el evento click que realizara la funcion dentro 3
+
+Ej
+$(".boton").on("click",function(){
+	$.get("https://jsonplaceholder.typicode.com/users",(data)=>{
+		console.log(data);
+		
+		let info = document.createElement("h1");
+
+		info.textContent = `User: ${data[0].name}`;
+		Al ser JQuery no es appendChild es solamente append
+		$("#respuesta").append(info);
+	
+	});
+});
+
+SIEMPRE SE PONE EL $ CUANDO ESTA USANDO JQUERY
+PARA ACCEDER A UN ELEMENTO MUY ANIDADO SERA CON SINTAXIS DE BRACKET NOTATION
+SE VERA EN EL PI
+info3.textContent = `Type: ${data.types[0].type.name}`
+$("respuesta").append(info3);
+
+PARA EL DELETE NO EXISTE LA SINTAXIS SIMPLIFICADA
+
+npm install
+npm start
+ctrl+c	
+
+
+
+
+
+
+
+
