@@ -1,0 +1,125 @@
+REACT-INTRO(IMPERATIVO)
+Es una libreria(dependencias) de JS que tiene todos los metodos para implementar un funcionamiento en especifico
+Caracteristicas:
+	-Declarativa:React decide como convertir un elemento sin romper nada.
+			Describe que se quiere hacer sin especificar como hacerlo
+	-Flujo de informacion UNIDIRECCIONAL:Un estado que cambie nuestra pagina va a ser escalado en un sentido
+	-Componente reutilizable: Componentes que trabajen independientes
+	-Eficiente
+	-Flexible
+Construye interfaces de usuarios
+
+State Change-Cambio de estado
+¿Para que React reaccione debe haber un cambio de estado?
+Cuando se detecte un cambio de estado, compara su virtual dom y real dom...al ver sus diferencias
+se realizara un renderizado nuevo para que el dom real sea igual al virtual dom
+
+COMPONENTE->Unidad modular de la interfaz de usuario. Permite dividir una app en partes independientes
+y reutilizables(mayor eficiencia y mantenimiento)
+Component Driven Development->CCD es una metodologia de desarrollo de software
+enfocado en la creacion de componentes reutilizables
+
+Para crear componentes se necesita->JSX(SOLO EXISTE EN REACT)
+Extension de la sintaxis de JS que permite escribir codigo HTML dentro de archivos JS
+EJ:
+const element = <h1 className='title'>Hello,world!</h1>
+
+Al subir esto, el compilador BABEL lo traducira a una informacion diferente para que se adapte al navegador
+
+Para construir una aplicacion de react aislada:
+npx create-react-app "nameArchivo"
+(si hay error: npm install -g npx)
+ya que si tenemos problemas y estamos con vite, es un quilombo
+
+en el index.html tendremos un div de id='root' que ese es donde va todo el react 
+
+todos los componentes de react deben devolver SI O SI un solo elemento
+(envolver todos sus datos dentro de un solo tag)
+
+declara COMPONENTES haciendo(forma antigua):
+-Clase(NO LA VAMOS A USAR A DIA DE HOY)
+class ClassCard extends Component{
+	render(){
+		return()
+	}
+}
+export default ClassCard;
+
+-Funcional(USAREMOS ESTA)
+function ClassCard(){
+	return();
+}
+
+crear un componente funcional->Card.jsx
+function Card(character){
+	return(
+		<div>
+			<h1>Nombre:{character.name}</h1>
+			<h2>Apellido: {character.apellido}</h2>
+			<p>Texto: {character.descripcion}</p>
+		</div>
+	)
+}
+export default Card;
+
+cardList.jsx
+import card from "./card"
+function CardList({props}){
+	return(
+		<div>
+al usar JS se usa:	{props.map(character=>
+				<card/>
+			)}
+		</div>
+//		<div>
+//			<card/>
+//			<card/>
+//			<card/>
+//			<card/>
+//		</div>
+	)
+}
+export default CardList;
+
+app.js
+import CardList from "./cardList"
+
+characters={
+	.....
+}
+function app(){
+	return(
+		<h1>HOLA MUNDO</h1>
+		<CardList props={characters}/>
+	)
+}
+export default app;
+
+PROPS
+LO QUE SE PONE COMO ATRIBUTO EN EL CARDLIST(props) ES LO QUE SE ENVIA A LAS DEPENDENCIAS
+Los props son info y funcionalidades que le puede heredar un componente padre a su componente hijo
+EN CLASE es {this. ..}
+EN FUNCION() es {props. ..}
+se envian en el return, se reciben como parametro
+
+
+Acostumbrarse a usar key={character.id} para evitar errores pero igual compila
+SE PUEDEN ENVIAR FUNCIONES,OBJETOS, ARRAYS Y DEMAS
+
+react tiene sus propios nombres para cada evento
+
+
+WEBPACK->unificar todos los archivos para que sean leidos dentro de un solo modulo
+para instalar:
+npm i -D webpack webpack-cli (habilita comandos webpack)
+
+npm i react react-dom (permite a react trabajar en el dom)
+
+npm i -D @babel/core (compilar js)
+	@babel/preset-env (compilar ES6)
+	@babel/preset-react (compilar JSX)
+	@babel-loader (webpack utilice babel)
+
+
+
+
