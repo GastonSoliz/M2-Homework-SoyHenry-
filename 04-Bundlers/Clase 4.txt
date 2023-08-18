@@ -1,0 +1,72 @@
+MODULOS Y BUNDLERS
+Un modulo se crearon como una forma de dividir las tareas del codigo
+Archivos independientes que cumplen una tarea especifica y que se une para hacer una tarea en conjunto
+El archivo principal dependera de los archivos independientes
+	import NavBar from {rutadelarchivoindependiente}....export 
+		a su vez..este archivo:
+		import "./navbar.styles.css"
+
+Patron de modulos IIFE(Inmediatly Invoked Function Expresion)
+se declara una funcion e inmediatamente se invoca
+const diaSemana = (function(){
+...
+})();	
+**Patron que se utilizaba antes** 
+
+CommonJS->Serie de estandares para implementar el uso de modulos
+Trabaja en Server Side
+
+arena.js->tiene exports.pelea=function(p1,p2){...};}
+peleadores.js->tiene objetos... module.exports={los objetos que quiera exportar}
+
+const torneo = require('./arena');
+const {Goku,Vegeta,Piccolo,Yamcha} = require('./peleadores');
+//destructuring
+const primeraBatalla = torneo.pelea(Goku,Vegeta);
+
+DEL LADO FRONT END
+ES6-> se debera poner export en cada elemento
+export const Goku = {...} 
+
+export function name(..){...}
+export default name(){...}
+es default cuando solo se va a exportar un solo elemento...
+
+import {...} from './... .js'
+import pelea from './arena.js'
+import {Goku,Vegeta,Piccolo,Yamcha} from './peleadores.js'
+import pelea as torneo from './arena.js' se cambia a la variable torneo
+
+const primeraBatalla = pelea(Goku,Vegeta);
+
+Se debe poner <script type="module" src='{rutademodulo}'></<script> en el archivo index.html de cada modulo js
+
+
+ESTO SIRVE PARA CUANDO YO TRATE DE CARGAR LA INFORMACION DESDE UNA PAGINA WEB
+
+WEBPACK(Dependencia que debe ser instalada)
+BUNDLERS->Tomar un archivo que verifique sus dependencias extrayendolas y unificandolas
+para devolver un solo archivo
+
+Dentro de webpack config
+module.exports={
+	entry: './browser/app.js', que archivo es la raiz del proyecto(si o si RECIBE DEPENDENCIAS)
+	output:{
+		path: __dirname + '/browser', donde debe crear el archivo
+		filename: 'bundle.js', este no se debe modificar ni nada
+	}
+}
+
+SE INICIA CON npm run build
+
+y normalmente en el index.html se pondra como
+<script type="module" src="/build/bundle.js"></script>
+ 
+EjDeBundler=>ROLL ON PARSER EASYBUILD
+
+
+HW
+backend
+const whiteboard = requiere("./whiteboard");
+frontend
+import {whiteboard} from "./whiteboard";
