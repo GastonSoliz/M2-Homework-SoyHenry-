@@ -1,0 +1,72 @@
+ESTADOS
+Es un objeto que contiene la informacion de un comoponente.Representa datos que pueden cambiar
+y que afectan al renderizado
+
+En Componentes de Clase:
+class App extends React.Component{
+constructor(){
+	super()
+	this.state={
+		name: "FirstName";
+	}	
+}
+render(
+onclick{()=>{
+	this.setState({
+		name:"newName"
+		especie:"Descripcion"
+	})
+})
+	
+return();
+}
+
+dentro del render van los cambios de estados que se van a renderizar
+con setState se cambia el estado y se crean nuevas propiedades 
+
+DATO INTERESANTE
+EN EL COMPONENTE PADRE PODES USAR UNA PROPIEDAD QUE TODAVIA NO DECLARASTE EN EL ESTADO INICIAL DEL THIS.STATE
+PERO SI DENTRO DEL RENDER, COMO ES EL CASO DE ESPECIE
+
+CICLO DE VIDA
+NACE-MONTAJE
+	Fase render=>Constructor{props,state}
+	Fase Pre-Commit=>return()
+	Fase Commit=>React actualiza DOM y referencias
+			componentDidMount
+CRECE-ACTUZALIZACION
+	Fase Render=>Nuevas props, setState
+			shouldComponentUpdate()->Ayuda a hacer una verificacion de si el metodo debe renderizarse
+	Fase Pre-Commit
+	Fase Commit=>componentDidUpdate
+MUERE-DESMONTAJE(Se usa mayormente para vaciar o limpiar el estado)
+	
+	Fase Commit=>componentWillUnmount
+
+LOS METODOS ESTOS COMO TAL NO EXISTEN EN COMPONENTES FUNCIONALES PERO SI EXISTEN
+se hace
+import {useState,useEffect} from "react";
+
+HOOK(SOLO EN COMPONENTES FUNCIONALES)
+Permite realizar acciones de manera mas sencilla y sin tener que convertirse en componentes de clase
+
+PUEDE HABER MAS DE 1 ESTADO
+const[ch,setCh]=useState([]);
+const[ej,setEj]=useState({nombre:"name"});
+useState->Genera un estado y dira que hacer con el
+primero va el estado y lo que se hara con el... y dentro del useState la propiedad par
+
+
+Hook useEffect->Reaccionar cuando hay cambios en el ciclo de vida
+Maneja las 3 etapas del ciclo de vida. Acepta un arreglo de dependencias que nos permitira decirle cuando debe ejecutarse
+Se crea un callback donde el primer bloque sera de la etapa Mount
+El return sera de la etapa Unmount
+
+useEffect(()=>{
+	setCharacters(personajes);
+},[ACA VA EL ARRAY DE DEPEDENCIAS]);
+El efecto de este hook depende del array de dependecias(props)
+
+SI EL USEEFFECT ES SOLO PARA EL CICLO MOUNT EL ARRAY DE DEPENDENCIAS VA VACIO
+
+UN ESTADO LOCAL PUEDE HEREDARSE
