@@ -1,0 +1,28 @@
+FORMULARIOS REACT
+(Pensar que los usuarios pueden hacer todo mal xd)->Limitar usuario
+Formulario controlado			NO CONTROLADO(se deben evitar)
+Validacion del input al analizar	El valor del input se obtiene del DOM
+el estado del componente	
+Validacion instantanea
+Deshabilitar condicionalmente el submit
+Campos requeridos
+Inputs dinamicos
+Muchos inputs para un mismo conjunto de datos
+
+Tendremos inputs que se analizaran letra por letra entonces
+se usara la propiedad name="" que redirecciona a que estado apuntar
+y la propiedad onchange a una funcion que vaya mandando cada letra a los estados
+****************************************************
+AL HACER UN SUBMIT POR DEFAULT SE RECARGA LA PAGINA
+se tiene que evitar con event.preventDefault() en la funcion de onSubmit
+SI O SI					
+****************************************************
+Se debe tener una funcion que valide las entradas por lo tanto crearemos un estado de errores			
+setErrores(function validar(...input,[event.target.name]:event.target.value))
+o sea lo mismo que va en el setInput del formulario inicial
+
+REALIZAMOS RENDERIZADO CONDICIONAL donde usaremos errors para que no se mande el formulario
+{errors.name||errors.email? null : (<button><button/>)}
+
+para verificar un email se debe usar una expresion regular RegEx
+if(/regEx/.test(input.email))
