@@ -1,0 +1,45 @@
+URL
+https://rym2-production.up.railway.app/api/character/$%7Bid%7D?key=henrym-usuariodegithub
+
+REACT ROUTER DOM
+Libreria enfocada a Routing(rutas)->react-router-dom VERSION 6
+
+(Verificar versiones en package.json)
+VERSION 5	VERSION 6
+Switch para cambiar ruta	Componente llamado Routes
+ruta definida con atributo component	ruta definida con atributo element
+atributo exact para marcar una ruta exacta	exact no necesario
+useHistory para navegar					useNavigate para navegar
+
+Single Page Apllication->Aplicacon web que se carga una sola vez y se actualiza dinamicamente
+sin necesidad de recargar la pagina completa
+Dentro de la pagina principal, hay una parte donde se renderizan las vistas
+
+Routing-> Proceso de dirigir a un usuario a diferentes paginas dentro de una misma app web
+Definidas en la url
+
+<Route path='name'/> te redigira a localhost/name
+
+ETAPAS PARA DEFINIR RUTAS:
+	Configuracion: Empieza con hacer import {BrowseRouter} from "react-router-dom"
+			en el index o main (donde este el ROOT) renderizarlo y poner la app dentro
+			
+			Carpeta de views->Home y Detail que seran importadas en app
+						Tambien se importara {Routes,route} from "react-route-dom"
+						Igual que en el index, todas las rutas deben estar dentro de <Routes></Routes>
+						Y dentro cada <Route path="/" element={<Home/>} />	</Route path="/detail/:id" element={<Detail/>}/> sera a donde ira
+								Element->Donde se redirigira		Parametro id->Desde del :id va todo el element
+
+			Componente Link ayuda a renderizar un link <Link to="/name"></Link> name tendra que ser igual al path
+								<NavLink> puede recibir estilos
+
+
+HOOKS DE NAVEGACION->Se importan desde app
+useLocation()->tendra un .pathname donde indicara en donde te encuentras y podria usarse
+	como una confirmacion de donde estamos para renderizar correctamente
+
+useNavigate()->Sirve para mantener cosas en su estado aunque te vayas
+Ayuda a redirigirnos a otra pagina pero mantener el estado de la anterior
+
+useParams()->Extrae los datos que vienen de la url como parametros(todo aquello que viene despues del "/:")
+						
