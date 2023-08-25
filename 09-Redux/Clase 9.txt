@@ -1,0 +1,51 @@
+REDUX->Libreria de gestion de estados, manteniendo el estado de una app en un unico lugar 
+DATA FLOW
+COMPONENT->PROPS DE COMPONENTS Y ASI SIGUE COMO UN ARBOL
+
+Store-> Definimos un almacen que envia la informacion de un estado a todos los componentes que lo requieran
+Aquellos componentes que puedan recibir el estado del store seran aquellos que estan suscritos
+
+
+Principios de Redux
+1-Unica fuente de verdad(STORE)
+const store = createStore(reducer);
+
+
+2-Estado es de solo lectura
+const initialState = {contador:0, nombre:"name", personas:[]} 
+
+determina que codigo quiero generar y modificar el estado
+const reducer = (state=initialState,action)=>{
+switch(action.type){
+	case AUMENTAR_CONTADOR:return{...state,contador:state.contador+1}
+	case DISMINUIR_CONTADOR:return{...state,contador:state.contador-1}
+	case agregarPERSONAS:return{...state,personas:[...action.persona]}
+}
+}
+
+3-Los cambios solo con funciones puras(funcion reducer(estado))
+action type->const AUMENTAR_CONTADOR = "AUMENTAR_CONTADOR"
+action creator-> 
+const aumentar=()=>{
+	return(
+		type:AUMENTAR_CONTADOR
+	)
+}
+const disminuir=()=>{
+	return(
+		type:AUMENTAR_CONTADOR
+	)
+}
+const agregarPERSONA=(persona)=>{
+	return(
+		type:AGREGAR,
+		payload:persona
+	)
+}
+
+
+store.dispatch(aumentar())
+
+las accion como tal es un objeto type,payload
+
+payload a veces no es necesario ya que capaz no necesitan info, sino solo cambiar
