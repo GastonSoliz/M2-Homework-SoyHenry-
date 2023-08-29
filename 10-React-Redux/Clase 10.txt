@@ -1,0 +1,91 @@
+git clone
+git branch -m main?
+git add .
+git commit
+git push origin main
+
+REACT REDUX
+COMPONENTES:
+Presentacionales dumb(Ej: Card) Componente que muestra la informacion e interfaz de usuario
+				Fuera de la logica ni interaccion con el estado
+	Como se ven las cosas
+	Trabaja con sus propiedades(las lee)
+	Invoca callbacks en sus propiedads
+
+	No estado propio generalmente
+	
+Containers Smart(Ej: Cards,Form) Componente encargado de conectar un componente presentacional al store de Redux
+				Proporciona datos y acciones necesarias para la interaccion
+	Como funcionan las cosas
+	Se suscribe al estado de Redux
+	Envia acciones a Redux
+
+	Poco DOM
+	No estilos
+	Provee Datos
+	Invoca Accciones
+
+SUSCRIBIR->Los componentes de React se suscriben al estado de Redux y estaran conectados al store del Redux
+		y recibe las actualizaciones del estado automaticamente
+
+CONEXION:Redux a React
+Instalar Redux:
+(Ignorar el Toolkit)
+	0-npm install redux
+	1-npm install react-redux
+	2-import {connect} from "react-redux";
+	3-export default connect(null,null)(Card);
+				callbacks				
+	Se conecta Card a redux anidando 2 funciones
+index=>
+	import {Provider} from "react-redux"; NO EL DE REACT
+	import {store} from "./store.js"
+	import {getCharacters} from "./actions.js"
+
+	DENTRO DE ROOT
+		<Provider store={store}>
+			<BrowserRouter>
+				<App/>
+			</Browser Router
+		</Provider>
+
+home=>
+	import {connect} from "react-redux"
+	
+	const mapDispatchToProps = (dispatch)=>({
+		return{getCharacters:()=>{dispatch(getCharacters())}}
+	})
+	
+	export default connect(null,mapDispatchToProps)(Home)
+
+store=>
+	import {createStore} from "redux"
+	import {reducer} from "./reducer.js"
+
+	export const store = createStore(reducer);
+
+reducer=>
+	let initialState = {characters:[]}
+	function reducer(state=initialState,action){
+		switch(action.type){
+			case "GET_CHARACTERS":return{...state,characters:action.payload}
+			case :
+			default : return state;
+		}
+	}
+	export default reducer;
+
+
+action=>
+	export const getCharacters = (dispatch) =>{
+		return{
+			type: "GET_CHARACTERS",
+			payload: [CHARACTERS!!!]
+		}
+	}
+
+	
+
+	
+	
+	
