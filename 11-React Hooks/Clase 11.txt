@@ -1,0 +1,32 @@
+REACT HOOK
+useState=>Agregar estado local a un componente funcional y cambiar o mutar ese estado
+const [algo,setAlgo] = useState({});
+		setAlgo para cambiar o mutar el estado
+useEffect=>Funcion de 2 argumentos (callback,array de dependencias)
+Si quiero que genere un efecto se le debe agregar al callback
+Si solo quieren que se genere un evento en el mount-> ni generar array de dependecias
+Para el update... el callback se repetira cada que se realice un cambio en el array de depedencias
+UnMount se ejecuta antes de desmontarse lo que esta en el return
+
+Un componente se desmonta cuando sale del DOM que esta siendo renderizado
+
+REACT REDUX HOOKS
+useSelector->Ayuda a generar una suscripcion al estado
+	const characters = useSelector(state=>state.characters)
+
+useDispatch->
+		Debemos guardar su ejecucion
+	const dispatch = useDispatch();
+
+La store que esta en el Provider es quien provee la informacion
+
+redux-thunk es una dependencia que nos permite configurar asincronismo
+que junto a applyMiddleware daran asincronismo a mi store(redux)
+
+useReducer->Generar un reducer dentro de un componente
+Es la simulacion de React para crear un reducer
+va combinado con los hooks useContext y createContext
+
+useRef->Toma valores por referencia
+Que se mantienen en el ciclo de vida de un componente, cuando se desmonta deja de existir
+se usa mas en inputs y buttons
