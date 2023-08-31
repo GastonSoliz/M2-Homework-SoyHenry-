@@ -1,0 +1,80 @@
+PARA CAMBIAR DE RAMA A LA MAIN
+git branch -M main
+
+CSS AVANZADO
+Ambos de estas reglas de estilo generan movimiento de componentes dentro un contenedor
+FLEXBOX->Forma de caja (implementaciones mas sencillas)
+	Opciones de distribucion en forma de filas o columnas
+GRID->Forma de grilla
+	Opciones de distribucion en forma de cuadritos que pueden unirse
+
+CSS Media Queries->Permite lograr un diseño responsive
+	keyframe @media= selecciona la pantalla y determinar su tamaño para renderizar
+			un estilo u otro
+	@media screen and (max-width: 992px)
+	Pantalla de menos de 992px de ancho
+
+CSS Framework
+	Bootstrap
+		Ventajas->Plantillas de facil adaptacion y resposive
+		Desventajas->No es ligero, depende de JS y JQuery
+				Tampoco es tan customizable
+	Foundation
+		Ventaja->Gran flexibilidad 
+		Desventaja->Bastante complejo
+	Bulma
+		Ventaja->Diseño elegant y minimalista
+		Desventaja->No tan popular
+	TAILWIND
+		Ventaja-> Muy bueno todooo
+		Desventaja->ES PAGA
+
+
+Preprocesador -> Programa que interpreta una sintaxis y la convierte a CSS PURO	
+		Nos permite escribir hojas de estilo mucho mas claras,sencillas,etc
+	LESS->Variaciones,Funciones,Selectores anidados**,ImportacionDeModulos,MIxins**
+	SASS
+
+REACT ESTILOS
+No existe ID ni tag
+Solo className que indicara a la pagina de donde tomaremos los estilos
+
+Legacy->(Ya no se ocupa)
+	import './App.css'
+	PRO->Compatibilidad
+	CONTRA->Estilos globales
+
+INLINE STYLING->Se usa al usar un estilo basico en un tag(MENOS SE USA)
+Hacer el CSS directamente en el componente como una variable e invocarlo en el render
+const divStyle={CSS}
+function Component(){
+	return <div style={divStyle}>HOLA</div>
+}
+
+CSS MODULE
+Hojas de estilos individuales creadas dentro de archivos modules.css
+que por convencionalidad estaran en la misma carpeta que el componente
+
+y se importaran como
+import style from 'landingPage.module.css';
+y se invocaran como
+className={style}
+O SEA UN OBJETO QUEEEEEEEEEE
+para acceder a sus propiedades
+className={style.container}
+
+Styled Components**
+Hacer componentes que al crearlos tenga estilos que seran ocupados
+hay que instalarlos
+npm install styled-components
+
+importar en ese componente
+import styled from "styled-components"
+export const CardContainer = styled.div`
+	CSS
+`;
+
+import {CardContainer,WizardName} from "./cardStyles"
+y se invocan como 
+
+<CardContainer></CardContainer>
